@@ -27,7 +27,7 @@ namespace Orleans.Serialization
             field.EnsureWireType(WireType.Reference);
             ReferenceCodec.MarkValueField(reader.Session);
             var reference = reader.ReadVarUInt32();
-            if (reference != 0) throw new UnknownReferencedTypeException(reference);
+            if (reference != 0) throw new ReferenceNotFoundException(typeof(Unit), reference);
             return null;
         }
     }
